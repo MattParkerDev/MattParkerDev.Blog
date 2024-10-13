@@ -10,6 +10,10 @@ The MS Learn docs don't specifically cover this use case, so I hope this is usef
 #### Scenario
 I have an ASP.NET Core app running in an Azure App Service that needs to connect with EF Core to an `Azure Database for PostgreSQL - Flexible Server`. I want to use a System Assigned Managed Identity to authenticate the web app to the database, as I'd like to avoid using passwords/secrets. Typically, this is easy in similar scenarios, such as connecting to Azure Blob Storage - just assign the required role to the App Service's Managed Identity, and it all works. However, it's not that easy with Azure PostgreSQL.
 
+Here are some of the relevant MS Learn docs for reference:
+* [Connect with managed identity to Azure Database for PostgreSQL - Flexible Server](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-connect-with-managed-identity)
+* [Use Microsoft Entra ID for authentication with Azure Database for PostgreSQL - Flexible Server](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+
 #### Problems and Solutions
 
 ##### Problem 1: Figuring out the Bicep to deploy the database, with managed identity access 🥁🎺:
@@ -156,6 +160,6 @@ Of Note:
 Honourable mention:
 * As I was writing this, I moved the `var credentials = new DefaultAzureCredential();` outside of the Func supplied to UsePeriodicPasswordProvider, to avoid it being instantiated every time the Func is called, but given that it is happening every 23 hours, it seems like a micro-optimisation at best 😅.
 
-##### Success!
+#### Success!
 
 That should be it! I hid the above code in a new extension method `services.AddCustomisedNpgsql(configuration);`, so I can pretend it doesn't exist from now on.
