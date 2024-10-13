@@ -50,7 +50,7 @@ public static class BlogService
         new()
         {
             Sequence = 4,
-            IsPublished = false,
+            IsPublished = true,
             PublishedDate = new DateTimeOffset(2024, 10, 13, 23, 50, 0, TimeZoneOffset),
             Slug = "azure-managed-identity-postgres-aspnetcore",
             Title = "ASP.NET Core: Connecting to an Azure PostgreSQL Database with Managed Identity",
