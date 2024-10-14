@@ -4,14 +4,13 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<InvariantGlobalization>true</InvariantGlobalization>
-		<BlazorEnableTimeZoneSupport>true</BlazorEnableTimeZoneSupport>
+		<InvariantTimezone>false</InvariantTimezone>
 		<RunAOTCompilation>true</RunAOTCompilation>
 		<PublishTrimmed>true</PublishTrimmed>
 		<TrimMode>full</TrimMode>
-		<WasmEnableWebcil>true</WasmEnableWebcil>
 		<SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
 		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
-		<!--        <WasmStripILAfterAOT>true</WasmStripILAfterAOT> errors?-->
+		<!--        <WasmStripILAfterAOT>true</WasmStripILAfterAOT> enabled by default in .NET 9-->
 	</PropertyGroup>
 	<ItemGroup>
 		<TrimmerRootAssembly Include="MattParkerDev.WebUI" />
