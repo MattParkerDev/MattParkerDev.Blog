@@ -12,8 +12,16 @@
     <hr class="border-b-2 border-primary w-64 mb-16" />
     
     <style>
-        pre code.hljs {
+        .mud-markdown-body pre code.hljs {
             margin-bottom: 1.25em;
+        }
+        .mud-markdown-body .mud-link {
+            color: var(--mud-palette-primary-darken) !important;
+            text-decoration: underline;
+        }
+        .mud-markdown-body .mud-link:hover {
+            color: var(--mud-palette-primary-darken) !important;
+            text-decoration: none;
         }
     </style>
     <MudMarkdown CodeBlockTheme="CodeBlockTheme.Vs2015" Value="@_markdownContent" />
