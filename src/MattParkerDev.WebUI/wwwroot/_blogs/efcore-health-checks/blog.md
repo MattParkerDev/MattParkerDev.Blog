@@ -20,4 +20,4 @@ builder.Services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>();
 ...
 ```
 
-Easy as that! The health check will call DatabaseFacade.CanConnectAsync() to check the health of the database.
+Easy as that! The health check will call `DatabaseFacade.CanConnectAsync()` to check the health of the database.

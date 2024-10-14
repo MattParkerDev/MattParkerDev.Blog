@@ -192,4 +192,4 @@ My biggest takeaways from Robert's presentation of equal importance:
 - Continuous Aggressive Learning
 
 Which requirement do you think is the most important? Are there any you hadn't considered before?
-Let me know on [Twitter](https://twitter.com/MattParkerDev) or [Threads](https://www.threads.net/@mattparkerdev)! 😊
+Let me know on [Twitter](https://twitter.com/MattParkerDev), [Threads](https://www.threads.net/@mattparkerdev), or in the comments below! 😊
