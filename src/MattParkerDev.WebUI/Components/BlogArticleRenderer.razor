@@ -1,6 +1,5 @@
 ﻿@using MattParkerDev.WebUI.Services
 @using System.Net
-
 @inject HttpClient Http
 
 <SeoHeader Title="@_blogTitle" Description="@_blogDescription"/>
@@ -18,7 +17,7 @@
         }
     </style>
     <MudMarkdown CodeBlockTheme="CodeBlockTheme.Vs2015" Value="@_markdownContent" />
-
+    <GiscusWidget />
 
 @code {
 
