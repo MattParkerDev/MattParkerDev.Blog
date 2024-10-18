@@ -19,7 +19,7 @@ Here are some of the relevant MS Learn docs for reference:
 ##### Problem 1: Figuring out the Bicep to deploy the database, with managed identity access 🥁🎺:
 
 
-```bicep
+```
 resource postgresFlexibleServer 'Microsoft.DBforPostgreSQL/flexibleServers@2023-12-01-preview' = {
   location: location
   name: 'psql-${applicationName}-${environment}'
@@ -68,7 +68,7 @@ Create a group like this:
 
 Take note of the Object ID. Let's add it to the Bicep file:
 
-```bicep
+```
 // ...[previous code]...
 
 resource postgresFlexibleServerEntraAdministrator 'Microsoft.DBforPostgreSQL/flexibleServers/administrators@2023-12-01-preview' = {
@@ -83,7 +83,7 @@ resource postgresFlexibleServerEntraAdministrator 'Microsoft.DBforPostgreSQL/fle
 
 We also need a system-assigned managed identity for the App Service. This is done by adding the `identity` property to the Bicep file:
 
-```bicep
+```
 resource appService 'Microsoft.Web/sites@2022-09-01' = {
   name: 'app-${applicationName}-${environment}'
   location: location
