@@ -15,8 +15,8 @@ else
 	<MudGrid Class="mt-8">
 		@foreach (var blog in BlogService.Blogs.OrderByDescending(s => s.Sequence))
 		{
-			<MudItem xs="12" sm="6" md="4" lg="3" xl="3">
-				<BlogPreviewCard Class="h-fit sm:h-[360px] rounded border-2 border-text" Title="@blog.Title" Description="@blog.Description" Slug="@blog.Slug" ImageUrl="@blog.PreviewImageUrl" Icon="@blog.PreviewImageIcon"/>
+			<MudItem xs="12" sm="6" md="4" lg="3" xl="3"> @* grayscale-0 hover:grayscale-[50%] *@
+				<BlogPreviewCard Class="h-fit sm:h-[360px] rounded border-2 border-text transition-colors bg-transparent hover:bg-gray-100 ease-in-out duration-150" Title="@blog.Title" Description="@blog.Description" Slug="@blog.Slug" ImageUrl="@blog.PreviewImageUrl" Icon="@blog.PreviewImageIcon"/>
 			</MudItem>
 		}
 	</MudGrid>
