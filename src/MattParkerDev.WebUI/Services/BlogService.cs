@@ -29,7 +29,7 @@ public static class BlogService
         },
         new()
         {
-            Sequence = 3,
+            Sequence = 2,
             IsPublished = true,
             PublishedDate = new DateTimeOffset(2023, 10, 08, 14, 10, 0, TimeZoneOffset),
             Slug = "componentizing-image-format-fallback-blazor",
@@ -39,7 +39,7 @@ public static class BlogService
         },
         new()
         {
-            Sequence = 4,
+            Sequence = 3,
             IsPublished = true,
             PublishedDate = new DateTimeOffset(2024, 03, 15, 18, 01, 0, TimeZoneOffset),
             Slug = "efcore-health-checks",

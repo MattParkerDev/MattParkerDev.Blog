@@ -13,7 +13,7 @@ else
     <hr class="border-b-2 border-accent w-64" />
     
     <MudGrid Class="mt-8">
-        @foreach(var blog in BlogService.Blogs.OrderBy(s => s.Sequence))
+        @foreach(var blog in BlogService.Blogs.OrderByDescending(s => s.Sequence))
         {
             <MudItem xs="12" sm="6" md="4" lg="3" xl="3">
                 <BlogPreviewCard Class="h-fit sm:h-[360px]" Title="@blog.Title" Description="@blog.Description" Slug="@blog.Slug" ImageUrl="@blog.PreviewImageUrl" Icon="@blog.PreviewImageIcon" />
