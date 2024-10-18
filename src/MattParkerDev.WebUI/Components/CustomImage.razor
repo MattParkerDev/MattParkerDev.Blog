@@ -1,48 +1,49 @@
-
 <picture>
-    @foreach(var extension in _preferredExtensionOrder.Take(_preferredExtensionOrder.Count - 1))
-    {
-        <source srcset="@Src.@extension" type="image/@extension"/>
-    }
-    <MudImage Elevation="@Elevation" Src="@(Src + "." + _preferredExtensionOrder.Last())" Class="@Class" Style="@Style" Height="@Height" Width="@Width" Alt="@Alt" />
+	@foreach (var extension in _preferredExtensionOrder.Take(_preferredExtensionOrder.Count - 1))
+	{
+		<source srcset="@Src.@extension" type="image/@extension"/>
+	}
+	<MudImage Elevation="@Elevation" Src="@(Src + "." + _preferredExtensionOrder.Last())" Class="@Class" Style="@Style" Height="@Height" Width="@Width" Alt="@Alt"/>
 </picture>
 
 @code {
-    /// <summary>
-    /// Image source URL, do not include the file extension
-    /// </summary>
-    [Parameter, EditorRequired]
-    public string Src { get; set; } = default!;
-    
-    [Parameter]
-    public int Elevation { get; set; }
-    
-    [Parameter]
-    public string? Class { get; set; }
-    
-    [Parameter]
-    public string? Style { get; set; }
-    
-    [Parameter]
-    public string? Alt { get; set; }
-    
-    [Parameter]
-    public int? Height { get; set; }
-    
-    [Parameter]
-    public int? Width { get; set; }
 
-    /// <summary>
-    /// Image format extension order, the last extension will be used in the fallback img tag
-    /// </summary>
-    [Parameter, EditorRequired]
-    public string PreferredExtensionOrder { get; set; } = default!;
-    
-    private List<string> _preferredExtensionOrder => PreferredExtensionOrder.Trim().Replace(" ", null).Split(',').ToList();
+	/// <summary>
+	/// Image source URL, do not include the file extension
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string Src { get; set; } = default!;
 
-    protected override void OnParametersSet()
-    {
-        if (_preferredExtensionOrder.Count < 1)
-            throw new ArgumentException("PreferredExtensionOrder must contain at least one image extension");
-    }
+	[Parameter]
+	public int Elevation { get; set; }
+
+	[Parameter]
+	public string? Class { get; set; }
+
+	[Parameter]
+	public string? Style { get; set; }
+
+	[Parameter]
+	public string? Alt { get; set; }
+
+	[Parameter]
+	public int? Height { get; set; }
+
+	[Parameter]
+	public int? Width { get; set; }
+
+	/// <summary>
+	/// Image format extension order, the last extension will be used in the fallback img tag
+	/// </summary>
+	[Parameter, EditorRequired]
+	public string PreferredExtensionOrder { get; set; } = default!;
+
+	private List<string> _preferredExtensionOrder => PreferredExtensionOrder.Trim().Replace(" ", null).Split(',').ToList();
+
+	protected override void OnParametersSet()
+	{
+		if (_preferredExtensionOrder.Count < 1)
+			throw new ArgumentException("PreferredExtensionOrder must contain at least one image extension");
+	}
+
 }

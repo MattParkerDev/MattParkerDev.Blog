@@ -4,14 +4,14 @@
 
 <SeoHeader Title="@_blogTitle" Description="@_blogDescription"/>
 
-    @if (_publishedDate is not null)
-    {
-        <MudText Style="font-style: italic" Typo="Typo.subtitle1" GutterBottom="true">Published by Matt Parker on @_publishedDate.Value.ToLocalTime().ToString("f")</MudText>
-    }
-    <MudText Class="d-flex mb-4" Typo="Typo.h3" GutterBottom="false">@_blogTitle</MudText>
-    <hr class="border-b-2 border-primary w-64 mb-16" />
-    
-    <style>
+@if (_publishedDate is not null)
+{
+	<MudText Style="font-style: italic" Typo="Typo.subtitle1" GutterBottom="true">Published by Matt Parker on @_publishedDate.Value.ToLocalTime().ToString("f")</MudText>
+}
+<MudText Class="d-flex mb-4" Typo="Typo.h3" GutterBottom="false">@_blogTitle</MudText>
+<hr class="border-b-2 border-primary w-64 mb-16"/>
+
+<style>
         .mud-markdown-body pre code.hljs {
             margin-bottom: 1.25em;
         }
@@ -32,40 +32,42 @@
             margin-left: 0;
         }
     </style>
-    <MudMarkdown CodeBlockTheme="CodeBlockTheme.Vs2015" Value="@_markdownContent" />
-    <GiscusWidget />
+<MudMarkdown CodeBlockTheme="CodeBlockTheme.Vs2015" Value="@_markdownContent"/>
+<GiscusWidget/>
 
 @code {
 
-    [Parameter]
-    public string BlogSlug { get; set; } = default!;
-    
-    private string _blogTitle = string.Empty;
-    private string _blogDescription = string.Empty;
-    private string _markdownContent = string.Empty;
-    private DateTimeOffset? _publishedDate = null;
+	[Parameter]
+	public string BlogSlug { get; set; } = default!;
 
-    protected override async Task OnInitializedAsync()
-    {
-        var blog = BlogService.GetBlogBySlug(BlogSlug);
-        if (blog is null)
-        {
-            _blogTitle = "404 Not Found 😢";
-            _markdownContent = "Head back to [blogs!](/blog)";
-            return;
-        }
-        try
-        {
-            var blogContent = await Http.GetStringAsync($"_blogs/{blog.Slug}/blog.md");
-            _blogTitle = blog.Title;
-            _markdownContent = blogContent;
-            _blogDescription = blog.Description;
-            _publishedDate = blog.PublishedDate;
-        }
-        catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.NotFound)
-        {
-            _blogTitle = "404 Not Found 😢";
-            _markdownContent = "Head back to [blogs!](/blog)";
-        }
-    }
+	private string _blogTitle = string.Empty;
+	private string _blogDescription = string.Empty;
+	private string _markdownContent = string.Empty;
+	private DateTimeOffset? _publishedDate = null;
+
+	protected override async Task OnInitializedAsync()
+	{
+		var blog = BlogService.GetBlogBySlug(BlogSlug);
+		if (blog is null)
+		{
+			_blogTitle = "404 Not Found 😢";
+			_markdownContent = "Head back to [blogs!](/blog)";
+			return;
+		}
+
+		try
+		{
+			var blogContent = await Http.GetStringAsync($"_blogs/{blog.Slug}/blog.md");
+			_blogTitle = blog.Title;
+			_markdownContent = blogContent;
+			_blogDescription = blog.Description;
+			_publishedDate = blog.PublishedDate;
+		}
+		catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.NotFound)
+		{
+			_blogTitle = "404 Not Found 😢";
+			_markdownContent = "Head back to [blogs!](/blog)";
+		}
+	}
+
 }

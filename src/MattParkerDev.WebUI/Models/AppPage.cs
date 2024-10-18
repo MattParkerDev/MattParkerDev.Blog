@@ -2,8 +2,8 @@
 
 public enum AppPage
 {
-    Home,
-    About,
-    Portfolio,
-    Blog,
+	Home,
+	About,
+	Portfolio,
+	Blog
 }

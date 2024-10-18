@@ -3,39 +3,39 @@
 @tailwind utilities;
 
 .logo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 0.75em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 0.75em;
 }
 
 .nav-link-parent:has(.nav-link-active) {
-    @apply border-b-2 border-b-primary border-t-2 border-t-transparent h-full content-center;
+	@apply border-b-2 border-b-primary border-t-2 border-t-transparent h-full content-center;
 }
 
 .logoface {
-    width: 30px;
-    transform: rotate(0);
+	width: 30px;
+	transform: rotate(0);
 }
 
-.logo:hover> .logoface {
-    transform: rotate(360deg);
-    transition: all ease-in-out 0.4s;
+.logo:hover > .logoface {
+	transform: rotate(360deg);
+	transition: all ease-in-out 0.4s;
 }
 
 .avatar-float {
-    animation: float 4s ease-in-out infinite;
+	animation: float 4s ease-in-out infinite;
 }
 
 @keyframes float {
-     0% {
-         transform: translatey(0px);
-     }
-     50% {
-         transform: translatey(-20px);
-     }
-     100% {
-         transform: translatey(0px);
-     }
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
 }

@@ -3,50 +3,54 @@
 <PageTitle>@GetTitle()</PageTitle>
 
 <HeadContent>
-    <meta Name="keywords" Content="@GetKeywords()" />
-    <meta Property="og:title" Content="@GetTitle()" />
-    <meta Name="twitter:title" Content="@GetTitle()" />
-    @if (!string.IsNullOrEmpty(Description))
-    {
-        <meta Name="description" Content="@GetSubTitle()" />
-        <meta Property="og:description" Content="@GetSubTitle()" />
-        <meta Name="twitter:description" Content="@GetSubTitle()" />
-    }
+	<meta Name="keywords" Content="@GetKeywords()"/>
+	<meta Property="og:title" Content="@GetTitle()"/>
+	<meta Name="twitter:title" Content="@GetTitle()"/>
+	@if (!string.IsNullOrEmpty(Description))
+	{
+		<meta Name="description" Content="@GetSubTitle()"/>
+		<meta Property="og:description" Content="@GetSubTitle()"/>
+		<meta Name="twitter:description" Content="@GetSubTitle()"/>
+	}
 </HeadContent>
 
 @code {
-    [Parameter]
-    public string? Title { get; set; }
-    
-    [Parameter]
-    public string? Description { get; set; }
-    
-    [Parameter]
-    public IEnumerable<string> Keywords { get; set; } = new List<string>();
-        
-    public string GetTitle() => Title is null ? "MattParkerDev" : $"{Title} | MattParkerDev";
-        
-    public string GetSubTitle()
-    {
-        if (string.IsNullOrEmpty(Description))
-            return "";
-        return Description.TrimEnd('.') + ".";
-    }
-    
-    public string GetKeywords()
-    {
-        var keywords = new List<string>();
-        
-        keywords.AddRange(Keywords);
-        
-        keywords.Add("Matt Parker");
-    
-        return string.Join(", ", keywords);
-    }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await JsRuntime.InvokeVoidAsync("setPreRenderReady");
-    }
+	[Parameter]
+	public string? Title { get; set; }
+
+	[Parameter]
+	public string? Description { get; set; }
+
+	[Parameter]
+	public IEnumerable<string> Keywords { get; set; } = new List<string>();
+
+	public string GetTitle()
+	{
+		return Title is null ? "MattParkerDev" : $"{Title} | MattParkerDev";
+	}
+
+	public string GetSubTitle()
+	{
+		if (string.IsNullOrEmpty(Description))
+			return "";
+		return Description.TrimEnd('.') + ".";
+	}
+
+	public string GetKeywords()
+	{
+		var keywords = new List<string>();
+
+		keywords.AddRange(Keywords);
+
+		keywords.Add("Matt Parker");
+
+		return string.Join(", ", keywords);
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await JsRuntime.InvokeVoidAsync("setPreRenderReady");
+	}
 
 }

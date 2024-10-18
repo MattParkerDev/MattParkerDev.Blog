@@ -4,55 +4,58 @@
 
 @if (BlogSlug is not null)
 {
-    <BlogArticleRenderer BlogSlug="@BlogSlug" />
+	<BlogArticleRenderer BlogSlug="@BlogSlug"/>
 }
 else
 {
-    <SeoHeader Title="@_browserTabTitle" Description="My published blogs on MattParkerDev" />
-    <MudText Typo="Typo.h2" Class="mb-4" GutterBottom="false">Blog</MudText>
-    <hr class="border-b-2 border-accent w-64" />
-    
-    <MudGrid Class="mt-8">
-        @foreach(var blog in BlogService.Blogs.OrderByDescending(s => s.Sequence))
-        {
-            <MudItem xs="12" sm="6" md="4" lg="3" xl="3">
-                <BlogPreviewCard Class="h-fit sm:h-[360px]" Title="@blog.Title" Description="@blog.Description" Slug="@blog.Slug" ImageUrl="@blog.PreviewImageUrl" Icon="@blog.PreviewImageIcon" />
-            </MudItem>
-        }
-    </MudGrid>
+	<SeoHeader Title="@_browserTabTitle" Description="My published blogs on MattParkerDev"/>
+	<MudText Typo="Typo.h2" Class="mb-4" GutterBottom="false">Blog</MudText>
+	<hr class="border-b-2 border-accent w-64"/>
+
+	<MudGrid Class="mt-8">
+		@foreach (var blog in BlogService.Blogs.OrderByDescending(s => s.Sequence))
+		{
+			<MudItem xs="12" sm="6" md="4" lg="3" xl="3">
+				<BlogPreviewCard Class="h-fit sm:h-[360px]" Title="@blog.Title" Description="@blog.Description" Slug="@blog.Slug" ImageUrl="@blog.PreviewImageUrl" Icon="@blog.PreviewImageIcon"/>
+			</MudItem>
+		}
+	</MudGrid>
 }
 
 
 @code {
-    [Parameter]
-    public string? BlogSlug { get; set; }
 
-    private string _browserTabTitle = "Blog";
+	[Parameter]
+	public string? BlogSlug { get; set; }
 
-    protected override void OnParametersSet()
-    {
-        if (BlogSlug is null)
-        {
-            SetBrowserTabTitle("Blog");
-            return;
-        }
-        if (BlogIsValid(BlogSlug))
-        {
-            SetBrowserTabTitle(BlogService.GetBlogTitleBySlug(BlogSlug));
-        }
-        else
-        {
-            SetBrowserTabTitle("Blog Not Found!");
-        }
-    }
+	private string _browserTabTitle = "Blog";
 
-    private void SetBrowserTabTitle(string title)
-    {
-        _browserTabTitle = title;
-    }
-    
-    private static bool BlogIsValid(string blogSlug)
-    {
-        return BlogService.Blogs.Any(b => b.Slug == blogSlug);
-    }
+	protected override void OnParametersSet()
+	{
+		if (BlogSlug is null)
+		{
+			SetBrowserTabTitle("Blog");
+			return;
+		}
+
+		if (BlogIsValid(BlogSlug))
+		{
+			SetBrowserTabTitle(BlogService.GetBlogTitleBySlug(BlogSlug));
+		}
+		else
+		{
+			SetBrowserTabTitle("Blog Not Found!");
+		}
+	}
+
+	private void SetBrowserTabTitle(string title)
+	{
+		_browserTabTitle = title;
+	}
+
+	private static bool BlogIsValid(string blogSlug)
+	{
+		return BlogService.Blogs.Any(b => b.Slug == blogSlug);
+	}
+
 }

@@ -2,96 +2,106 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script> window.prerenderReady = false; </script>
-    <title>MattParkerDev</title>
-    <base href="/" />
-    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="fonts/roboto-v30-latin-regular.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="fonts/roboto-v30-latin-700.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="fonts/roboto-v30-latin-500.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="fonts/roboto-v30-latin-300.woff2" />
-    <link href="css/fonts.css" rel="stylesheet" />
-    <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
-    <link href="_content/MudBlazor.Markdown/MudBlazor.Markdown.min.css" rel="stylesheet" />
-    <link href="css/tailwind.css" rel="stylesheet" />
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<script> window.prerenderReady = false; </script>
+	<title>MattParkerDev</title>
+	<base href="/"/>
+	<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+	<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous"
+		  href="fonts/roboto-v30-latin-regular.woff2"/>
+	<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="fonts/roboto-v30-latin-700.woff2"/>
+	<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="fonts/roboto-v30-latin-500.woff2"/>
+	<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="fonts/roboto-v30-latin-300.woff2"/>
+	<link href="css/fonts.css" rel="stylesheet"/>
+	<link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet"/>
+	<link href="_content/MudBlazor.Markdown/MudBlazor.Markdown.min.css" rel="stylesheet"/>
+	<link href="css/tailwind.css" rel="stylesheet"/>
 </head>
 
 <body>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S63E8336J4"></script>
-    <script>
-        window.setPreRenderReady = function () {
-            window.prerenderReady = true;
-        };
-        
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-S63E8336J4');
-    </script>
-    <div id="app">
-        <!--Loading...-->
-        <style>
-            .loading-container {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100vw;
-                height: 80vh;
-            }
-            .loader {
-                color: #90a6fb;
-                font-family: Roboto, Consolas, Menlo, Monaco, monospace;
-                font-weight: bold;
-                opacity: 0.8;
-            }
-            .l1 {
-                display: inline-block;
-                font-size: 13rem;
-                animation: pulse-small 0.8s alternate infinite ease-in-out;
-            }
-            .l2 {
-                display: inline-block;
-                font-size: 14rem;
-                animation: pulse 0.8s 0.7s alternate infinite ease-in-out;
-            }
-            .l3 {
-                display: inline-block;
-                font-size: 13rem;
-                animation: pulse-small 0.8s alternate infinite ease-in-out;
-            }
-    
-            @keyframes pulse {
-                to {
-                    transform: scale(0.9);
-                    opacity: 0.5;
-                }
-            }
-            @keyframes pulse-small {
-                to {
-                    transform: scale(0.8);
-                    opacity: 0.5;
-                }
-            }
-        </style>
-        
-        <div class="loading-container">
-            <span class="loader l1">&lt;</span>
-            <span class="loader l2">/</span>
-            <span class="loader l3">&gt;</span>
-        </div>
-    </div>
-    <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div>
-    
-    <script defer src="_framework/blazor.webassembly.js"></script>
-    <script defer src="_content/MudBlazor/MudBlazor.min.js"></script>
-    <script defer src="_content/MudBlazor.Markdown/MudBlazor.Markdown.min.js"></script>
-    <script async src="js/avatar-animation-event-listener.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S63E8336J4"></script>
+<script>
+	window.setPreRenderReady = function () {
+		window.prerenderReady = true;
+	};
+
+	window.dataLayer = window.dataLayer || [];
+
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+
+	gtag('js', new Date());
+	gtag('config', 'G-S63E8336J4');
+</script>
+<div id="app">
+	<!--Loading...-->
+	<style>
+		.loading-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100vw;
+			height: 80vh;
+		}
+
+		.loader {
+			color: #90a6fb;
+			font-family: Roboto, Consolas, Menlo, Monaco, monospace;
+			font-weight: bold;
+			opacity: 0.8;
+		}
+
+		.l1 {
+			display: inline-block;
+			font-size: 13rem;
+			animation: pulse-small 0.8s alternate infinite ease-in-out;
+		}
+
+		.l2 {
+			display: inline-block;
+			font-size: 14rem;
+			animation: pulse 0.8s 0.7s alternate infinite ease-in-out;
+		}
+
+		.l3 {
+			display: inline-block;
+			font-size: 13rem;
+			animation: pulse-small 0.8s alternate infinite ease-in-out;
+		}
+
+		@keyframes pulse {
+			to {
+				transform: scale(0.9);
+				opacity: 0.5;
+			}
+		}
+
+		@keyframes pulse-small {
+			to {
+				transform: scale(0.8);
+				opacity: 0.5;
+			}
+		}
+	</style>
+
+	<div class="loading-container">
+		<span class="loader l1">&lt;</span>
+		<span class="loader l2">/</span>
+		<span class="loader l3">&gt;</span>
+	</div>
+</div>
+<div id="blazor-error-ui">
+	An unhandled error has occurred.
+	<a href="" class="reload">Reload</a>
+	<a class="dismiss">🗙</a>
+</div>
+
+<script defer src="_framework/blazor.webassembly.js"></script>
+<script defer src="_content/MudBlazor/MudBlazor.min.js"></script>
+<script defer src="_content/MudBlazor.Markdown/MudBlazor.Markdown.min.js"></script>
+<script async src="js/avatar-animation-event-listener.js"></script>
 </body>
 
 </html>

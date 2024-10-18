@@ -1,84 +1,85 @@
-﻿
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
 
 <MudThemeProvider IsDarkMode="@_isDarkMode" Theme="@ThemeProvider.MyTheme"/>
-<MudPopoverProvider />
+<MudPopoverProvider/>
 <MudDialogProvider/>
-<MudSnackbarProvider />
+<MudSnackbarProvider/>
 
 <MudLayout>
-    <MudAppBar Fixed="true" Class="justify-center flex flex-row border-b border-gray-100" ToolBarClass="container w-full" Elevation="0" Gutters="true">
-        <div class="d-flex logo">
-            <MudImage Class="w-[30px] logoface" Src="img/hero.svg"></MudImage>
-            <MudLink Href="/" Typo="Typo.h6" Color="Color.Inherit" Underline="Underline.None">MattParkerDev</MudLink>
-        </div>
+	<MudAppBar Fixed="true" Class="justify-center flex flex-row border-b border-gray-100" ToolBarClass="container w-full" Elevation="0" Gutters="true">
+		<div class="d-flex logo">
+			<MudImage Class="w-[30px] logoface" Src="img/hero.svg"></MudImage>
+			<MudLink Href="/" Typo="Typo.h6" Color="Color.Inherit" Underline="Underline.None">MattParkerDev</MudLink>
+		</div>
 
-        @* <MudButton Variant="@GetNavButtonVariant(AppPage.Home)" Class="d-flex d-sm-none pa-1 ml-2" Style="min-width: 32px;" Color="@GetNavButtonColour(AppPage.Home)" Icon="@Icons.Material.Filled.Home" Href="/"> *@
-        @*     <MudIcon Class="pa-0 ma-0" Icon="@Icons.Material.Filled.Home"/> *@
-        @* </MudButton> *@
+		@* <MudButton Variant="@GetNavButtonVariant(AppPage.Home)" Class="d-flex d-sm-none pa-1 ml-2" Style="min-width: 32px;" Color="@GetNavButtonColour(AppPage.Home)" Icon="@Icons.Material.Filled.Home" Href="/"> *@
+		@*     <MudIcon Class="pa-0 ma-0" Icon="@Icons.Material.Filled.Home"/> *@
+		@* </MudButton> *@
 
-        <MudSpacer/>
+		<MudSpacer/>
 
-        @* <MudButton Variant="@GetNavButtonVariant(AppPage.Home)" Class="hidden mx-1 px-3 d-none d-sm-flex" Color="@GetNavButtonColour(AppPage.Home)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Home" Href="/">Home</MudButton> *@
-        @* <MudButton Variant="@GetNavButtonVariant(AppPage.About)" Class="hidden" Color="@GetNavButtonColour(AppPage.About)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Info" Href="about">About</MudButton> *@
-        @* <MudButton Variant="@GetNavButtonVariant(AppPage.Portfolio)" Class="hidden" Color="@GetNavButtonColour(AppPage.Portfolio)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Article" Href="portfolio">Portfolio</MudButton> *@
-        @* <MudButton Variant="@GetNavButtonVariant(AppPage.Blog)" Class="@GetNavButtonClass(AppPage.Blog)" Color="@GetNavButtonColour(AppPage.Blog)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Newspaper" Href="blog">Blog</MudButton> *@
-        
-        <div class="nav-link-parent">
-            <NavLink href="blog" Match="NavLinkMatch.Prefix" ActiveClass="nav-link-active">
-                <MudText Typo="Typo.h6" Class="text-text hover:text-gray-700" Color="Color.Default">Blog</MudText>
-            </NavLink>
-        </div>
+		@* <MudButton Variant="@GetNavButtonVariant(AppPage.Home)" Class="hidden mx-1 px-3 d-none d-sm-flex" Color="@GetNavButtonColour(AppPage.Home)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Home" Href="/">Home</MudButton> *@
+		@* <MudButton Variant="@GetNavButtonVariant(AppPage.About)" Class="hidden" Color="@GetNavButtonColour(AppPage.About)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Info" Href="about">About</MudButton> *@
+		@* <MudButton Variant="@GetNavButtonVariant(AppPage.Portfolio)" Class="hidden" Color="@GetNavButtonColour(AppPage.Portfolio)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Article" Href="portfolio">Portfolio</MudButton> *@
+		@* <MudButton Variant="@GetNavButtonVariant(AppPage.Blog)" Class="@GetNavButtonClass(AppPage.Blog)" Color="@GetNavButtonColour(AppPage.Blog)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Newspaper" Href="blog">Blog</MudButton> *@
 
-        @* <MudIconButton Class="hidden pl-1" Title="Toggle dark mode" Icon="@(_isDarkMode ? @Icons.Material.Rounded.LightMode : @Icons.Material.Outlined.DarkMode)" Color="Color.Inherit" OnClick="@ToggleDarkMode"/> *@
-    </MudAppBar>
+		<div class="nav-link-parent">
+			<NavLink href="blog" Match="NavLinkMatch.Prefix" ActiveClass="nav-link-active">
+				<MudText Typo="Typo.h6" Class="text-text hover:text-gray-700" Color="Color.Default">Blog</MudText>
+			</NavLink>
+		</div>
 
-    <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.False" Class="container my-16 pt-16 d-none d-md-block">
-            @Body
-        </MudContainer>
-        <MudContainer MaxWidth="MaxWidth.False" Class="container my-8 pt-2 d-block d-md-none">
-            @Body
-        </MudContainer>
-    </MudMainContent>
+		@* <MudIconButton Class="hidden pl-1" Title="Toggle dark mode" Icon="@(_isDarkMode ? @Icons.Material.Rounded.LightMode : @Icons.Material.Outlined.DarkMode)" Color="Color.Inherit" OnClick="@ToggleDarkMode"/> *@
+	</MudAppBar>
+
+	<MudMainContent>
+		<MudContainer MaxWidth="MaxWidth.False" Class="container my-16 pt-16 d-none d-md-block">
+			@Body
+		</MudContainer>
+		<MudContainer MaxWidth="MaxWidth.False" Class="container my-8 pt-2 d-block d-md-none">
+			@Body
+		</MudContainer>
+	</MudMainContent>
 </MudLayout>
 
 @code {
-    bool _isDarkMode = false;
+	bool _isDarkMode = false;
 
-    private void ToggleDarkMode()
-    {
-        _isDarkMode = !_isDarkMode;
-    }
-    
-    private string GetNavButtonClass(AppPage page)
-    {
-        //var classString = page == GetCurrentPageAsEnum() ? "mud-chip-text mud-chip-color-primary mx-1 px-3" : "mx-1 px-3";
-        var classString = "mx-1 px-3";
-        return classString;
-    }
-    
-    private Variant GetNavButtonVariant(AppPage page)
-    {
-        return page == GetCurrentPageAsEnum() ? Variant.Filled : Variant.Text;
-    }
-    
-    private Color GetNavButtonColour(AppPage page)
-    {
-        return page == GetCurrentPageAsEnum() ? Color.Primary : Color.Inherit;
-    }
-    
-    private AppPage GetCurrentPageAsEnum()
-    {
-        var currentPathString = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
-        // Quick and dirty
-        if (currentPathString.StartsWith("blog"))
-        {
-            currentPathString = "blog";
-        }
-        Enum.TryParse(currentPathString, true, out AppPage currentPage);
+	private void ToggleDarkMode()
+	{
+		_isDarkMode = !_isDarkMode;
+	}
 
-        return currentPage;
-    }
+	private string GetNavButtonClass(AppPage page)
+	{
+		//var classString = page == GetCurrentPageAsEnum() ? "mud-chip-text mud-chip-color-primary mx-1 px-3" : "mx-1 px-3";
+		var classString = "mx-1 px-3";
+		return classString;
+	}
+
+	private Variant GetNavButtonVariant(AppPage page)
+	{
+		return page == GetCurrentPageAsEnum() ? Variant.Filled : Variant.Text;
+	}
+
+	private Color GetNavButtonColour(AppPage page)
+	{
+		return page == GetCurrentPageAsEnum() ? Color.Primary : Color.Inherit;
+	}
+
+	private AppPage GetCurrentPageAsEnum()
+	{
+		var currentPathString = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+		// Quick and dirty
+		if (currentPathString.StartsWith("blog"))
+		{
+			currentPathString = "blog";
+		}
+
+		Enum.TryParse(currentPathString, true, out AppPage currentPage);
+
+		return currentPage;
+	}
+
 }
