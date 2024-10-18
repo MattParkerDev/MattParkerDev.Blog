@@ -1,8 +1,5 @@
 ﻿@page "/"
 
-@implements IDisposable
-@inject IJSRuntime JsRuntime
-
 <SeoHeader Title="Home" Description="My portfolio website and where I blog about .NET, Azure and all things software." />
 
 <div class="flex flex-col-reverse md:flex-row justify-between items-center gap-8 md:gap-8">
@@ -20,10 +17,7 @@
         </MudContainer>
     </MudContainer>
 
-    <img alt="Hero Image" class="rounded-xl w-[80%] md:w-[40%]" src="img/hero.svg"/> @* border-[6px] border-text *@
-    @* <MudAvatar @onclick="ScheduleAnimationOrCancelAnimation" Class="@_avatarIconClass" Elevation="16" Style="width: 300px; height: 300px; cursor: pointer"> *@
-    @*     <CustomImage Src="img/github-profile-pic" PreferredExtensionOrder="avif,webp,png" Width="300" Height="300" Alt="MattParkerDev's Profile Picture" /> *@
-    @* </MudAvatar> *@
+    <img alt="Hero Image" class="rounded-xl w-[80%] md:w-[40%]" src="img/hero.svg"/>
 </div>
     
     <MudText Class="d-flex d-sm-none" Typo="Typo.body1" Style="font-weight: bold" >Software Engineer at SSW<br/> C# | .NET | Blazor | TypeScript | React </MudText>
@@ -37,51 +31,5 @@
     </MudContainer>
 
 @code {
-    private string _avatarIconClass = "";
-    private bool _animationCancellationScheduled = false;
     
-    private DotNetObjectReference<Index>? _objRef;
-
-    protected override void OnInitialized()
-    {
-        _objRef = DotNetObjectReference.Create(this);
-    }
-
-    private async Task ScheduleAnimationOrCancelAnimation()
-    {
-        if (_avatarIconClass == "")
-        {
-            AddAnimationClass();
-            _animationCancellationScheduled = false;
-            return;
-        }
-        _animationCancellationScheduled = true;
-        await JsRuntime.InvokeVoidAsync("registerAnimationEventListener", _objRef);
-    }
-
-    [JSInvokable]
-    public void RemoveAnimationClassIfScheduled()
-    {
-        if (_animationCancellationScheduled)
-        {
-            RemoveAnimationClass();
-        }
-    }
-    
-    private void RemoveAnimationClass()
-    {
-        _avatarIconClass = "";
-        StateHasChanged();
-    }
-    
-    private void AddAnimationClass()
-    {
-        _avatarIconClass = "avatar-float";
-        StateHasChanged();
-    }
-
-    public void Dispose()
-    {
-        _objRef?.Dispose();
-    }
 }

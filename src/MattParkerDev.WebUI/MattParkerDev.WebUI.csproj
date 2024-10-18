@@ -25,6 +25,9 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="wwwroot\js\" />
+	</ItemGroup>
 
 	<PropertyGroup Label="Tailwind Properties">
 		<TailwindMinify>false</TailwindMinify>
