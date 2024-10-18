@@ -44,8 +44,8 @@
     private string _blogDescription = string.Empty;
     private string _markdownContent = string.Empty;
     private DateTimeOffset? _publishedDate = null;
-    
-    protected override async Task OnParametersSetAsync()
+
+    protected override async Task OnInitializedAsync()
     {
         var blog = BlogService.GetBlogBySlug(BlogSlug);
         if (blog is null)
