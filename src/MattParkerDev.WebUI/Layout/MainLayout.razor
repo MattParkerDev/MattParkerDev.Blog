@@ -24,7 +24,12 @@
         @* <MudButton Variant="@GetNavButtonVariant(AppPage.About)" Class="hidden" Color="@GetNavButtonColour(AppPage.About)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Info" Href="about">About</MudButton> *@
         @* <MudButton Variant="@GetNavButtonVariant(AppPage.Portfolio)" Class="hidden" Color="@GetNavButtonColour(AppPage.Portfolio)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Article" Href="portfolio">Portfolio</MudButton> *@
         @* <MudButton Variant="@GetNavButtonVariant(AppPage.Blog)" Class="@GetNavButtonClass(AppPage.Blog)" Color="@GetNavButtonColour(AppPage.Blog)" IconColor="Color.Inherit" StartIcon="@Icons.Material.Filled.Newspaper" Href="blog">Blog</MudButton> *@
-        <MudLink Typo="Typo.h6" Class="text-text hover:text-gray-700" Color="Color.Default" Href="blog" Underline="Underline.None">Blog</MudLink>
+        
+        <div class="nav-link-parent">
+            <NavLink href="blog" Match="NavLinkMatch.Prefix" ActiveClass="nav-link-active">
+                <MudText Typo="Typo.h6" Class="text-text hover:text-gray-700" Color="Color.Default">Blog</MudText>
+            </NavLink>
+        </div>
 
         @* <MudIconButton Class="hidden pl-1" Title="Toggle dark mode" Icon="@(_isDarkMode ? @Icons.Material.Rounded.LightMode : @Icons.Material.Outlined.DarkMode)" Color="Color.Inherit" OnClick="@ToggleDarkMode"/> *@
     </MudAppBar>

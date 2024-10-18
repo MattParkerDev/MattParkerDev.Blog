@@ -10,6 +10,10 @@
     gap: 0.75em;
 }
 
+.nav-link-parent:has(.nav-link-active) {
+    @apply border-b-2 border-b-primary border-t-2 border-t-transparent h-full content-center;
+}
+
 .logoface {
     width: 30px;
     transform: rotate(0);

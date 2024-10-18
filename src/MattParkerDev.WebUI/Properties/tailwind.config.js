@@ -37,6 +37,7 @@ module.exports = {
         900: '#1a1a1a',
         950: '#0d0d0d',
       },
+      'transparent': 'transparent',
     },
   },
   plugins: [],
