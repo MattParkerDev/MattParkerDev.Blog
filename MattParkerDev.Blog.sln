@@ -6,7 +6,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 		.gitignore = .gitignore
-		.csharpierrc = .csharpierrc
 		global.json = global.json
 		build-cloudflare.sh = build-cloudflare.sh
 		vercel.json = vercel.json
