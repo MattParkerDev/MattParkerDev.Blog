@@ -1,11 +1,11 @@
 ﻿@inject NavigationManager NavigationManager
 
-<MudCard Class="@Class" Style="cursor:pointer;" @onclick="OpenBlog">
+<MudCard Class="@Class" Style="cursor:pointer;" @onclick="@OpenBlog">
 	<MudStack Style="height: 200px">
 		<MudStack>
 			@if (ImageUrl is not null)
 			{
-				<MudImage Class="object-cover h-[200px] w-full rounded-tl-[5px] rounded-tr-[5px]" Elevation="0" Src="@ImageUrl"/>
+				<MudImage Class="object-cover h-[200px] w-full rounded-tl-[2px] rounded-tr-[2px]" Elevation="0" Src="@ImageUrl"/>
 			}
 			else if (Icon is not null)
 			{

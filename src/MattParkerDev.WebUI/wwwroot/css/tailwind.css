@@ -725,16 +725,24 @@ video {
   align-self: center;
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .rounded-xl {
   border-radius: 0.75rem;
 }
 
-.rounded-tl-\[5px\] {
-  border-top-left-radius: 5px;
+.rounded-tl-\[2px\] {
+  border-top-left-radius: 2px;
 }
 
-.rounded-tr-\[5px\] {
-  border-top-right-radius: 5px;
+.rounded-tr-\[2px\] {
+  border-top-right-radius: 2px;
+}
+
+.border-2 {
+  border-width: 2px;
 }
 
 .border-b {
@@ -762,6 +770,11 @@ video {
 .border-primary {
   --tw-border-opacity: 1;
   border-color: rgb(189 157 221 / var(--tw-border-opacity));
+}
+
+.border-text {
+  --tw-border-opacity: 1;
+  border-color: rgb(24 2 2 / var(--tw-border-opacity));
 }
 
 .border-b-transparent {
