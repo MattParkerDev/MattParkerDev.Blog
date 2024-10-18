@@ -819,7 +819,7 @@ video {
   transform: rotate(0);
 }
 
-.logo:hover> .logoface {
+.logo:hover > .logoface {
   transform: rotate(360deg);
   transition: all ease-in-out 0.4s;
 }
