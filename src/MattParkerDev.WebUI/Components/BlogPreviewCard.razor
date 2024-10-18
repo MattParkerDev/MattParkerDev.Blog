@@ -1,26 +1,28 @@
 ﻿@inject NavigationManager NavigationManager
 
-<MudCard Class="@Class" Style="cursor:pointer;" @onclick="@OpenBlog">
-	<MudStack Style="height: 200px">
-		<MudStack>
-			@if (ImageUrl is not null)
-			{
-				<MudImage Class="object-cover h-[200px] w-full rounded-tl-[2px] rounded-tr-[2px]" Elevation="0" Src="@ImageUrl"/>
-			}
-			else if (Icon is not null)
-			{
-				<MudImage Src="@Icon" Style="background-color: #f3f3f3; height: 200px; width: 100%; object-fit: contain; border-top-left-radius: 5px; border-top-right-radius: 5px;"/>
-			}
-		</MudStack>
-		<MudSpacer/>
-	</MudStack>
-	<MudCardContent>
-		<MudText Class="line-clamp-4" Typo="Typo.h5">@Title</MudText>
-		<MudText>@Description</MudText>
-	</MudCardContent>
-	<MudCardActions>
-	</MudCardActions>
-</MudCard>
+<a href="/blog/@Slug">
+	<MudCard Class="@Class">
+			<MudStack Style="height: 200px">
+				<MudStack>
+					@if (ImageUrl is not null)
+					{
+						<MudImage Class="object-cover h-[200px] w-full rounded-tl-[2px] rounded-tr-[2px]" Elevation="0" Src="@ImageUrl"/>
+					}
+					else if (Icon is not null)
+					{
+						<MudImage Src="@Icon" Style="background-color: #f3f3f3; height: 200px; width: 100%; object-fit: contain; border-top-left-radius: 5px; border-top-right-radius: 5px;"/>
+					}
+				</MudStack>
+				<MudSpacer/>
+			</MudStack>
+			<MudCardContent>
+				<MudText Class="line-clamp-4" Typo="Typo.h5">@Title</MudText>
+				<MudText>@Description</MudText>
+			</MudCardContent>
+			<MudCardActions>
+			</MudCardActions>
+	</MudCard>
+</a>
 
 @code {
 
@@ -41,10 +43,5 @@
 
 	[Parameter]
 	public string? Class { get; set; }
-
-	private void OpenBlog()
-	{
-		NavigationManager.NavigateTo("/blog/" + Slug);
-	}
 
 }
