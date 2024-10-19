@@ -54,17 +54,19 @@
 			_markdownContent = "Head back to [blogs!](/blog)";
 			return;
 		}
+		_blogTitle = blog.Title;
+		_blogDescription = blog.Description;
+		_publishedDate = blog.PublishedDate;
 
 		try
 		{
 			var blogContent = await Http.GetStringAsync($"_blogs/{blog.Slug}/blog.md");
-			_blogTitle = blog.Title;
 			_markdownContent = blogContent;
-			_blogDescription = blog.Description;
-			_publishedDate = blog.PublishedDate;
 		}
 		catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.NotFound)
 		{
+			_blogDescription = string.Empty;
+			_publishedDate = null;
 			_blogTitle = "404 Not Found 😢";
 			_markdownContent = "Head back to [blogs!](/blog)";
 		}
