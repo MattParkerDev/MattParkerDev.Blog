@@ -33,7 +33,10 @@
         }
     </style>
 <MudMarkdown CodeBlockTheme="CodeBlockTheme.Vs2015" Value="@_markdownContent"/>
-<GiscusWidget/>
+@if (_blogExists is true)
+{
+	<GiscusWidget/>
+}
 
 @code {
 
@@ -44,6 +47,7 @@
 	private string _blogDescription = string.Empty;
 	private string _markdownContent = string.Empty;
 	private DateTimeOffset? _publishedDate = null;
+	private bool? _blogExists = null;
 
 	protected override async Task OnInitializedAsync()
 	{
@@ -52,8 +56,10 @@
 		{
 			_blogTitle = "404 Not Found 😢";
 			_markdownContent = "Head back to [blogs!](/blog)";
+			_blogExists = false;
 			return;
 		}
+		_blogExists = true;
 		_blogTitle = blog.Title;
 		_blogDescription = blog.Description;
 		_publishedDate = blog.PublishedDate;
@@ -65,6 +71,7 @@
 		}
 		catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.NotFound)
 		{
+			_blogExists = false;
 			_blogDescription = string.Empty;
 			_publishedDate = null;
 			_blogTitle = "404 Not Found 😢";
