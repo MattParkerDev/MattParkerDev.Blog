@@ -4,6 +4,7 @@ module.exports = {
 	mode: "jit",
 	content: [
 		"../**/*.{razor,razor.css,cs,js,html}",
+		"!../Properties/**",
 	],
 	theme: {
 		extend: {},
