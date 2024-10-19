@@ -7,7 +7,12 @@
 	<MudIconButton Href="blog" Size="Size.Large" Icon="@Icons.Material.Filled.ArrowBack"></MudIconButton>
 	@if (_publishedDate is not null)
 	{
-		<MudText Style="font-style: italic" Typo="Typo.subtitle1" GutterBottom="true">Published by Matt Parker on @_publishedDate.Value.ToLocalTime().ToString("f")</MudText>
+		<span class="hidden md:inline">
+			<MudText Style="font-style: italic" Typo="Typo.subtitle1" GutterBottom="true">Published by Matt Parker on @_publishedDate.Value.ToLocalTime().ToString("f")</MudText>
+		</span>
+		<span class="inline md:hidden">
+			<MudText Style="font-style: italic" Typo="Typo.subtitle1" GutterBottom="true">Matt Parker: @_publishedDate.Value.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm")</MudText>
+		</span>
 	}
 	<MudText Class="d-flex mb-4" Typo="Typo.h3" GutterBottom="false">@_blogTitle</MudText>
 	<hr class="border-b-2 border-primary w-64 mb-16"/>

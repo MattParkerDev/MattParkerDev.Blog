@@ -664,6 +664,10 @@ video {
   -webkit-line-clamp: 4;
 }
 
+.inline {
+  display: inline;
+}
+
 .flex {
   display: flex;
 }
@@ -943,6 +947,14 @@ video {
   .md\:\!my-8 {
     margin-top: 2rem !important;
     margin-bottom: 2rem !important;
+  }
+
+  .md\:inline {
+    display: inline;
+  }
+
+  .md\:hidden {
+    display: none;
   }
 
   .md\:w-\[40\%\] {
