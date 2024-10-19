@@ -2,41 +2,44 @@
 @using System.Net
 @inject HttpClient Http
 
-<SeoHeader Title="@_blogTitle" Description="@_blogDescription"/>
+<div class="my-2 pt-0 md:!my-8 md:!pt-2">
+	<SeoHeader Title="@_blogTitle" Description="@_blogDescription"/>
+	<MudIconButton Href="blog" Size="Size.Large" Icon="@Icons.Material.Filled.ArrowBack"></MudIconButton>
+	@if (_publishedDate is not null)
+	{
+		<MudText Style="font-style: italic" Typo="Typo.subtitle1" GutterBottom="true">Published by Matt Parker on @_publishedDate.Value.ToLocalTime().ToString("f")</MudText>
+	}
+	<MudText Class="d-flex mb-4" Typo="Typo.h3" GutterBottom="false">@_blogTitle</MudText>
+	<hr class="border-b-2 border-primary w-64 mb-16"/>
 
-@if (_publishedDate is not null)
-{
-	<MudText Style="font-style: italic" Typo="Typo.subtitle1" GutterBottom="true">Published by Matt Parker on @_publishedDate.Value.ToLocalTime().ToString("f")</MudText>
-}
-<MudText Class="d-flex mb-4" Typo="Typo.h3" GutterBottom="false">@_blogTitle</MudText>
-<hr class="border-b-2 border-primary w-64 mb-16"/>
+	<MudMarkdown CodeBlockTheme="CodeBlockTheme.Vs2015" Value="@_markdownContent"/>
+	@if (_blogExists is true)
+	{
+		<GiscusWidget/>
+	}
+</div>
 
 <style>
-        .mud-markdown-body pre code.hljs {
-            margin-bottom: 1.25em;
-        }
-        .mud-markdown-body .mud-link {
-            color: var(--mud-palette-primary-darken) !important;
-            text-decoration: underline;
-        }
-        .mud-markdown-body .mud-link:hover {
-            color: var(--mud-palette-primary-darken) !important;
-            text-decoration: none;
-        }
-        div.mud-container .mud-markdown-body p code {
-            font-family: inherit;
-        }
-        div.mud-container .mud-markdown-body blockquote {
-            border-left: 4px solid var(--mud-palette-secondary-darken);
-            padding-left: 1em;
-            margin-left: 0;
-        }
-    </style>
-<MudMarkdown CodeBlockTheme="CodeBlockTheme.Vs2015" Value="@_markdownContent"/>
-@if (_blogExists is true)
-{
-	<GiscusWidget/>
-}
+	.mud-markdown-body pre code.hljs {
+		margin-bottom: 1.25em;
+	}
+	.mud-markdown-body .mud-link {
+		color: var(--mud-palette-primary-darken) !important;
+		text-decoration: underline;
+	}
+	.mud-markdown-body .mud-link:hover {
+		color: var(--mud-palette-primary-darken) !important;
+		text-decoration: none;
+	}
+	div.mud-container .mud-markdown-body p code {
+		font-family: inherit;
+	}
+	div.mud-container .mud-markdown-body blockquote {
+		border-left: 4px solid var(--mud-palette-secondary-darken);
+		padding-left: 1em;
+		margin-left: 0;
+	}
+</style>
 
 @code {
 

@@ -1,5 +1,5 @@
 ﻿@page "/blog/{blogslug?}"
-
+@layout UnpaddedLayout
 @using MattParkerDev.WebUI.Services
 
 @if (BlogSlug is not null)
@@ -8,18 +8,20 @@
 }
 else
 {
-	<SeoHeader Title="@_browserTabTitle" Description="My published blogs on MattParkerDev"/>
-	<MudText Typo="Typo.h2" Class="mb-4" GutterBottom="false">Blog</MudText>
-	<hr class="border-b-2 border-accent w-64"/>
+	<div class="my-8 pt-2 md:!my-16 md:!pt-16">
+		<SeoHeader Title="@_browserTabTitle" Description="My published blogs on MattParkerDev"/>
+		<MudText Typo="Typo.h2" Class="mb-4" GutterBottom="false">Blog</MudText>
+		<hr class="border-b-2 border-accent w-64"/>
 
-	<MudGrid Class="mt-8">
-		@foreach (var blog in BlogService.Blogs.OrderByDescending(s => s.Sequence))
-		{
-			<MudItem xs="12" sm="6" md="4" lg="3" xl="3"> @* grayscale-0 hover:grayscale-[50%] *@
-				<BlogPreviewCard Class="h-fit sm:h-[360px] rounded border-2 border-text transition-colors bg-transparent hover:bg-gray-100 ease-in-out duration-150" Title="@blog.Title" Description="@blog.Description" Slug="@blog.Slug" ImageUrl="@blog.PreviewImageUrl" Icon="@blog.PreviewImageIcon"/>
-			</MudItem>
-		}
-	</MudGrid>
+		<MudGrid Class="mt-8">
+			@foreach (var blog in BlogService.Blogs.OrderByDescending(s => s.Sequence))
+			{
+				<MudItem xs="12" sm="6" md="4" lg="3" xl="3"> @* grayscale-0 hover:grayscale-[50%] *@
+					<BlogPreviewCard Class="h-fit sm:h-[360px] rounded border-2 border-text transition-colors bg-transparent hover:bg-gray-100 ease-in-out duration-150" Title="@blog.Title" Description="@blog.Description" Slug="@blog.Slug" ImageUrl="@blog.PreviewImageUrl" Icon="@blog.PreviewImageIcon"/>
+				</MudItem>
+			}
+		</MudGrid>
+	</div>
 }
 
 
