@@ -733,6 +733,10 @@ video {
   justify-content: space-between;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-8 {
   gap: 2rem;
 }
@@ -877,11 +881,8 @@ video {
 }
 
 .logo {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 0.75em;
 }
 
 .nav-link-parent:has(.nav-link-active) {
@@ -889,12 +890,11 @@ video {
   border-bottom-color: rgb(189 157 221 / var(--tw-border-opacity));
 }
 
-.logoface {
-  width: 30px;
+.logo-icon {
   transform: rotate(0);
 }
 
-.logo:hover > .logoface {
+.logo:hover > .logo-icon {
   transform: rotate(360deg);
   transition: all ease-in-out 0.4s;
 }

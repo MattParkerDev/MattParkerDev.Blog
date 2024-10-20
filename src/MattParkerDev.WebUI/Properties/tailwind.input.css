@@ -3,23 +3,19 @@
 @tailwind utilities;
 
 .logo {
-	display: flex;
-	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	gap: 0.75em;
 }
 
 .nav-link-parent:has(.nav-link-active) {
 	@apply border-b-primary;
 }
 
-.logoface {
-	width: 30px;
+.logo-icon {
 	transform: rotate(0);
 }
 
-.logo:hover > .logoface {
+.logo:hover > .logo-icon {
 	transform: rotate(360deg);
 	transition: all ease-in-out 0.4s;
 }
