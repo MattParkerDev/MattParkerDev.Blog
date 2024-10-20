@@ -7,10 +7,6 @@
 	align-items: center;
 }
 
-.nav-link-parent:has(.nav-link-active) {
-	@apply border-b-primary;
-}
-
 .logo-icon {
 	transform: rotate(0);
 }
