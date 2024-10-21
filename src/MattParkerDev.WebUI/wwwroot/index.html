@@ -18,21 +18,18 @@
 </head>
 
 <body>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S63E8336J4"></script>
-<script>
-	window.setPreRenderReady = function () {
-		window.prerenderReady = true;
-	};
+	<script>
+		window.setPreRenderReady = function () {
+			window.prerenderReady = true;
+		};
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-S63E8336J4');
+	</script>
 
-	window.dataLayer = window.dataLayer || [];
-
-	function gtag() {
-		dataLayer.push(arguments);
-	}
-
-	gtag('js', new Date());
-	gtag('config', 'G-S63E8336J4');
-</script>
 <div id="app">
 	<!--Loading...-->
 	<style>
