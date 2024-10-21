@@ -1003,6 +1003,14 @@ video {
 }
 
 @media (min-width: 640px) {
+  .sm\:block {
+    display: block;
+  }
+
+  .sm\:hidden {
+    display: none;
+  }
+
   .sm\:h-\[360px\] {
     height: 360px;
   }
@@ -1049,5 +1057,15 @@ video {
 
   .md\:\!pt-2 {
     padding-top: 0.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:flex {
+    display: flex;
+  }
+
+  .lg\:hidden {
+    display: none;
   }
 }
