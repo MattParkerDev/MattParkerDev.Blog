@@ -1,5 +1,18 @@
-﻿<script type="module" src="https://esm.sh/giscus"></script>
+﻿@if (_load)
+{
+	<script type="module" src="https://esm.sh/giscus"></script>
+}
 
 @code {
+	private bool _load = false;
 
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			await Task.Yield(); // wait for everything to render
+			_load = true;
+			StateHasChanged();
+		}
+	}
 }
