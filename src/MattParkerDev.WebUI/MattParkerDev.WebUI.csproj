@@ -18,8 +18,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.10"/>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.10" PrivateAssets="all"/>
-		<PackageReference Include="MudBlazor" Version="7.11.0"/>
-		<PackageReference Include="MudBlazor.Markdown" Version="7.8.0"/>
+		<PackageReference Include="MudBlazor" Version="7.15.0" />
+		<PackageReference Include="MudBlazor.Markdown" Version="7.14.0" />
 		<PackageReference Include="Tailwind.MSBuild" Version="1.1.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
