@@ -1,10 +1,26 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "chmod +x build-cloudflare.sh && ./build-cloudflare.sh",
-  "outputDirectory": "output/wwwroot",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }]
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "buildCommand": "chmod +x build-cloudflare.sh && ./build-cloudflare.sh",
+    "outputDirectory": "output/wwwroot",
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ],
+    "headers": [
+        {
+            "source": "/",
+            "headers": [
+                {
+                    "key": "Cross-Origin-Embedder-Policy",
+                    "value": "require-corp"
+                },
+                {
+                    "key": "Cross-Origin-Opener-Policy",
+                    "value": "same-origin"
+                }
+            ]
+        }
+    ]
 }

@@ -16,6 +16,10 @@ csharp_space_after_colon_in_inheritance_clause = true
 resharper_csharp_force_attribute_style = join
 resharper_csharp_keep_existing_attribute_arrangement = true
 
+[*.json]
+indent_style = space
+indent_size = 4
+
 [*.yml]
 indent_style = space
 indent_size = 2
