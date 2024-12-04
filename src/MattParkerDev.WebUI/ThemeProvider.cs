@@ -26,29 +26,7 @@ public static class ThemeProvider
 		},
 		Typography = new Typography()
 		{
-			Default = new Default()
-			{
-				FontFamily = new[] { "Roboto", "Helvetica", "Arial", "sans-serif" },
-				FontSize = "1rem",
-				FontWeight = 400,
-				LineHeight = 1.5,
-				LetterSpacing = "0.00938em"
-			},
-			H1 = new H1()
-			{
-				FontSize = "5rem",
-				FontWeight = 600
-			},
-			H2 = new H2()
-			{
-				FontSize = "3.75rem",
-				FontWeight = 500
-			},
-			H3 = new H3()
-			{
-				FontSize = "3rem",
-				FontWeight = 500
-			}
+
 		}
 	};
 }
