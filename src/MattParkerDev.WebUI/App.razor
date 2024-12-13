@@ -1,3 +1,71 @@
+<script type="text/javascript">
+	let browserRenderer = window.browserRenderer;
+
+	(function (instance) {
+		if (typeof instance.updateComponent !== 'function') {
+			throw new Error('The provided instance does not have an updateComponent method.');
+		}
+
+
+		function getClosestDomElement(logicalElement) {
+			if (logicalElement instanceof Element || logicalElement instanceof DocumentFragment) {
+				return logicalElement;
+			}
+			else if (logicalElement instanceof Comment) {
+				return logicalElement.parentNode;
+			}
+			else {
+				throw new Error('Not a valid logical element');
+			}
+		}
+		const originalFunction = instance.applyEdits.bind(instance);
+
+		// Replace the updateComponent method with a proxied version
+		instance.applyEdits = new Proxy(originalFunction, {
+			apply: (target, thisArg, args) => {
+				const element = args[2];
+				const childIndex = args[3];
+				let elementsToPaint = [];
+				if (element instanceof Element || element instanceof DocumentFragment){
+					elementsToPaint.push(element);
+					throw new Error("Haven't seen this occur yet");
+				}
+				else if (element instanceof Comment){
+					let test = element.nextElementSibling;
+					while (test){
+						elementsToPaint.push(test);
+						test = test.nextElementSibling;
+					}
+				}
+				else{
+					throw new Error('Not a valid logical element');
+				}
+
+				//let closestDomElement = getClosestDomElement(element);
+				if (elementsToPaint.length > 0)
+				{
+					setTimeout(function()
+					{
+						for (const elementToPaint of elementsToPaint) {
+							elementToPaint.style.boxShadow = "0 0 0 4px inset darkorchid";
+							elementToPaint.style.backgroundColor = "pink";
+						}
+						setTimeout(function()
+						{
+							for (const elementToPaint of elementsToPaint) {
+								elementToPaint.style.boxShadow = "";
+								elementToPaint.style.backgroundColor = "";
+							}
+						}, 600);
+					}, 1);
+				}
+
+				return target(...args); // Call the original method
+			},
+		});
+	})(browserRenderer);
+</script>
+
 <Router AppAssembly="@typeof(App).Assembly">
 	<Found Context="routeData">
 		<RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>

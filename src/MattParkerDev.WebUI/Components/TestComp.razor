@@ -1,0 +1,29 @@
+﻿@* <div class="bg-gray-100"> *@
+	<h3>TestComp</h3>
+	<div>Param1: @MyParam</div>
+	@* <MudButton OnClick="() => MyParam++">Increment from within component</MudButton> *@
+	<button @onclick="() => MyParam++" type="button" class="mud-button-root mud-button mud-button-text mud-button-text-default mud-button-text-size-medium mud-ripple">Increment from within component (html button)</button>
+	<button @onclick="@StateHasChanged" type="button" class="mud-button-root mud-button mud-button-text mud-button-text-default mud-button-text-size-medium mud-ripple">StateHasChanged in Component</button>
+	<NoParamsComponentTest />
+	<SingleValueParamComponentTest TestParam="@NestedParam" />
+
+
+@code {
+
+    private int MyParam { get; set; }
+    private int NestedParam { get; set; } = 6;
+
+	protected override void OnInitialized()
+	{
+		// Task.Run(async () =>
+		// {
+		// 	while (true)
+		// 	{
+		// 		await Task.Delay(1000);
+		// 		MyParam++;
+		// 		await InvokeAsync(StateHasChanged);
+		// 		//StateHasChanged();
+		// 	}
+		// });
+	}
+}

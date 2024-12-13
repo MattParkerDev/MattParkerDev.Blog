@@ -1,0 +1,23 @@
+﻿@page "/testpage"
+
+<div>
+
+<h3>TestPage</h3>
+<div class="flex flex-col">
+	<div class="w-[80%] self-center"><TestComp /></div>
+</div>
+
+<TestCompDoesUpdate MyParam="MyParam2" />
+<NoParamsComponentTest />
+@* <MudButton OnClick="() => MyParam2++">Increment int on Page (MudButton)</MudButton> *@
+<button @onclick="() => MyParam2++" type="button" class="mud-button-root mud-button mud-button-text mud-button-text-default mud-button-text-size-medium mud-ripple">Increment int on Page (html button)</button>
+<button @onclick="@StateHasChanged" type="button" class="mud-button-root mud-button mud-button-text mud-button-text-default mud-button-text-size-medium mud-ripple">StateHasChanged in Page</button>
+<div>On TestPage @MyParam2</div>
+
+</div>
+
+
+@code {
+
+	private int MyParam2 { get; set; }
+}

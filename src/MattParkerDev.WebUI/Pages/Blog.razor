@@ -20,6 +20,9 @@ else
 				</MudItem>
 			}
 		</MudGrid>
+		<TestComp />
+		<div>Param2: @MyParam2</div>
+		<MudButton OnClick="() => MyParam2++">Increment externally</MudButton>
 	</div>
 }
 
@@ -30,6 +33,19 @@ else
 	public string? BlogSlug { get; set; }
 
 	private string _browserTabTitle = "Blog";
+	private int MyParam2 { get; set; }
+
+	protected override void OnInitialized()
+	{
+		Task.Run(async () =>
+		{
+			while (true)
+			{
+				await Task.Delay(1000);
+				MyParam2++;
+			}
+		});
+	}
 
 	protected override void OnParametersSet()
 	{

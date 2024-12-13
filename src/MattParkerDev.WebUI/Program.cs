@@ -1,6 +1,10 @@
+using Castle.Components.DictionaryAdapter.Xml;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MattParkerDev.WebUI;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.AspNetCore.Components.RenderTree;
 using MudBlazor;
 using MudBlazor.Services;
 
@@ -17,4 +21,8 @@ builder.Services.AddMudServices(config =>
 });
 builder.Services.AddMudMarkdownServices();
 
-await builder.Build().RunAsync();
+//builder.Logging.SetMinimumLevel(LogLevel.Trace);
+
+var host = builder.Build();
+
+await host.RunAsync();
