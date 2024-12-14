@@ -1,10 +1,9 @@
 ﻿@page "/testpage"
 
-<div>
 
 <h3>TestPage</h3>
-<div class="flex flex-col">
-	<div class="w-[80%] self-center"><TestComp /></div>
+<div class="flex flex-col border-gray border-1 w-[80%] self-center">
+	<TestComp />
 </div>
 
 <TestCompDoesUpdate MyParam="MyParam2" />
@@ -14,7 +13,6 @@
 <button @onclick="@StateHasChanged" type="button" class="mud-button-root mud-button mud-button-text mud-button-text-default mud-button-text-size-medium mud-ripple">StateHasChanged in Page</button>
 <div>On TestPage @MyParam2</div>
 
-</div>
 
 
 @code {
