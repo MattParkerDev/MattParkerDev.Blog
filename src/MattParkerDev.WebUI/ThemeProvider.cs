@@ -20,34 +20,34 @@ public static class ThemeProvider
 			Surface = "#ffffff",
 			ActionDefault = "#263238"
 		},
-		LayoutProperties = new LayoutProperties()
+		LayoutProperties = new LayoutProperties
 		{
 			DefaultBorderRadius = "4px" // Rounded edges for components
 		},
-		Typography = new Typography()
+		Typography = new Typography
 		{
-			Default = new Default()
+			Default = new DefaultTypography
 			{
-				FontFamily = new[] { "Roboto", "Helvetica", "Arial", "sans-serif" },
+				FontFamily = ["Roboto", "Helvetica", "Arial", "sans-serif"],
 				FontSize = "1rem",
-				FontWeight = 400,
-				LineHeight = 1.5,
+				FontWeight = "400",
+				LineHeight = "1.5",
 				LetterSpacing = "0.00938em"
 			},
-			H1 = new H1()
+			H1 = new H1Typography
 			{
 				FontSize = "5rem",
-				FontWeight = 600
+				FontWeight = "600"
 			},
-			H2 = new H2()
+			H2 = new H2Typography
 			{
 				FontSize = "3.75rem",
-				FontWeight = 500
+				FontWeight = "500"
 			},
-			H3 = new H3()
+			H3 = new H3Typography
 			{
 				FontSize = "3rem",
-				FontWeight = 500
+				FontWeight = "500"
 			}
 		}
 	};
