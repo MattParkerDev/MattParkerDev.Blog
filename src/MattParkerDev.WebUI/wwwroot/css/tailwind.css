@@ -178,7 +178,7 @@
   --tw-contain-style:  ;
 }
 
-/* ! tailwindcss v3.4.14 | MIT License | https://tailwindcss.com */
+/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -849,22 +849,22 @@ video {
 
 .border-accent {
   --tw-border-opacity: 1;
-  border-color: rgb(158 220 173 / var(--tw-border-opacity));
+  border-color: rgb(158 220 173 / var(--tw-border-opacity, 1));
 }
 
 .border-gray-100 {
   --tw-border-opacity: 1;
-  border-color: rgb(230 230 230 / var(--tw-border-opacity));
+  border-color: rgb(230 230 230 / var(--tw-border-opacity, 1));
 }
 
 .border-primary {
   --tw-border-opacity: 1;
-  border-color: rgb(189 157 221 / var(--tw-border-opacity));
+  border-color: rgb(189 157 221 / var(--tw-border-opacity, 1));
 }
 
 .border-text {
   --tw-border-opacity: 1;
-  border-color: rgb(24 2 2 / var(--tw-border-opacity));
+  border-color: rgb(24 2 2 / var(--tw-border-opacity, 1));
 }
 
 .border-b-transparent {
@@ -916,7 +916,7 @@ video {
 
 .text-text {
   --tw-text-opacity: 1;
-  color: rgb(24 2 2 / var(--tw-text-opacity));
+  color: rgb(24 2 2 / var(--tw-text-opacity, 1));
 }
 
 .underline {
@@ -984,12 +984,12 @@ video {
 
 .hover\:bg-gray-100:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(230 230 230 / var(--tw-bg-opacity));
+  background-color: rgb(230 230 230 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
-  color: rgb(77 77 77 / var(--tw-text-opacity));
+  color: rgb(77 77 77 / var(--tw-text-opacity, 1));
 }
 
 .hover\:grayscale-\[50\%\]:hover {
@@ -999,7 +999,7 @@ video {
 
 .has-\[\.nav-link-active\]\:border-b-primary:has(.nav-link-active) {
   --tw-border-opacity: 1;
-  border-bottom-color: rgb(189 157 221 / var(--tw-border-opacity));
+  border-bottom-color: rgb(189 157 221 / var(--tw-border-opacity, 1));
 }
 
 @media (min-width: 640px) {
