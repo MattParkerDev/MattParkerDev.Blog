@@ -23,7 +23,7 @@
 	public string? Description { get; set; }
 
 	[Parameter]
-	public IEnumerable<string> Keywords { get; set; } = new List<string>();
+	public IEnumerable<string> Keywords { get; set; } = [];
 
 	public string GetTitle()
 	{
@@ -44,6 +44,7 @@
 		keywords.AddRange(Keywords);
 
 		keywords.Add("Matt Parker");
+		keywords.Add("MattParkerDev");
 
 		return string.Join(", ", keywords);
 	}
