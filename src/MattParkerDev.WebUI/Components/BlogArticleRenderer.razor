@@ -3,7 +3,7 @@
 @inject HttpClient Http
 
 <div class="my-2 pt-0 md:!my-8 md:!pt-2">
-	<SeoHeader Title="@_blogTitle" Description="@_blogDescription"/>
+	<SeoHeader Title="@_blogTitle" Description="@_blogDescription" Keywords="_keywords"/>
 	<MudIconButton Href="blog" Size="Size.Large" Icon="@Icons.Material.Filled.ArrowBack"></MudIconButton>
 	@if (_publishedDate is not null)
 	{
@@ -55,6 +55,7 @@
 	private string _blogDescription = string.Empty;
 	private string _markdownContent = string.Empty;
 	private DateTimeOffset? _publishedDate = null;
+	private List<string> _keywords = [];
 	private bool? _blogExists = null;
 
 	protected override async Task OnInitializedAsync()
@@ -70,6 +71,7 @@
 		_blogExists = true;
 		_blogTitle = blog.Title;
 		_blogDescription = blog.Description;
+		_keywords = blog.Keywords;
 		_publishedDate = blog.PublishedDate;
 
 		try
