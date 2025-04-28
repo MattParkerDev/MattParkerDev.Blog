@@ -1,23 +1,22 @@
 ﻿@page "/"
+@using MattParkerDev.WebUI.Services
 
 <SeoHeader Title="Home" Description="My portfolio website and where I blog about .NET, Azure and all things software."/>
-
+<MudIconButton Icon="@(CustomTimeProvider.Custom.Paused ? Icons.Material.Filled.PlayArrow : Icons.Material.Filled.Pause)" OnClick="() => CustomTimeProvider.Custom.TogglePause()"></MudIconButton>
+<button @onclick="@AddUnfinishedTrace">Add Trace</button>
+<div class="w-full border-2 border-red flex flex-col" style="align-items: end">
+	<div class="w-full flex flex-row justify-between">
+		<span>-30s</span>
+		<span>-15s</span>
+		<span>Now</span>
+	</div>
+	@foreach (var trace in Traces)
+	{
+		<div class="bg-primary rounded px-1" style="text-wrap: nowrap; width: @trace.PercentageOfTimeline%; margin-right: @trace.PercentageOfTimelineSinceFinished%;">@trace.Name</div>
+	}
+</div>
 <div class="my-8 pt-2 md:!my-16 md:!pt-16">
 	<div class="flex flex-col-reverse md:flex-row justify-between items-center gap-8 md:gap-8">
-		<MudContainer Class="mx-0 w-full md:w-[60%]">
-			<MudText Align="Align.Center" Typo="Typo.h1" Class="text-bold" GutterBottom="true">Hi, I'm Matt Parker! 👋</MudText>
-			<MudText Align="Align.Center" Class="hidden sm:block" Typo="Typo.body1" Style="font-weight: bold">Software Engineer at SSW | C# | .NET | Blazor | TypeScript | React </MudText>
-			<MudContainer Class="hidden lg:flex mx-0 px-0 mt-3 w-full justify-center">
-				<div class="flex flex-row justify-between w-[80%] self-center">
-					<MudChip T="string" Href="https://ssw.com.au/people/matt-parker" Target="_blank" Icon="@Icons.Material.Filled.Person" Color="Color.Primary">SSW.People</MudChip>
-					<MudChip T="string" Href="https://www.linkedin.com/in/mattparkerdev" Target="_blank" Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Primary">LinkedIn</MudChip>
-					<MudChip T="string" Href="https://github.com/MattParkerDev" Target="_blank" Icon="@Icons.Custom.Brands.GitHub" Color="Color.Primary">GitHub</MudChip>
-					<MudChip T="string" Href="https://twitter.com/MattParkerDev" Target="_blank" Icon="@Icons.Custom.Brands.Twitter" Color="Color.Primary">Twitter</MudChip>
-				</div>
-			</MudContainer>
-		</MudContainer>
-
-		<img alt="Hero Image" class="rounded-xl w-[80%] md:w-[40%]" src="img/hero.svg"/>
 	</div>
 
 	<MudText Class="flex sm:hidden" Typo="Typo.body1" Style="font-weight: bold">Software Engineer at SSW<br/> C# | .NET | Blazor | TypeScript | React </MudText>
@@ -32,5 +31,73 @@
 </div>
 
 @code {
+	private List<OtlpTrace> Traces { get; set; } = [];
+	private int _traceInteger = 1;
+	protected override async Task OnInitializedAsync()
+	{
+		await Task.Delay(200);
+		AddUnfinishedTrace();
+		await Task.Run(async () =>
+		{
+			while (true)
+			{
+				await Task.Delay(10);
+				var anyRemoved = Traces.RemoveAll(s => s.EndTime < CustomTimeProvider.Custom.GetLocalNow() - TimeSpan.FromSeconds(30));
+				if (CustomTimeProvider.Custom.Paused)
+				{
+					continue;
+				}
+				//Traces.Where(s => s.StartTime < DateTimeOffset.Now - TimeSpan.FromSeconds(3) && s.Finished is false).ToList().ForEach(FinishTrace);
+				await InvokeAsync(StateHasChanged);
+			}
+		});
+	}
 
+	private void AddUnfinishedTrace()
+	{
+		var newTrace = new OtlpTrace
+		{
+			StartTime = DateTimeOffset.Now,
+			EndTime = null,
+			FinalDuration = null,
+			Finished = false,
+			Name = $"{GetRandomHttpVerb()} Request {_traceInteger}"
+		};
+		_traceInteger++;
+		Traces.Add(newTrace);
+		_ = Task.Run(async () =>
+		{
+			var seconds = Random.Shared.Next(3, 8);
+			await Task.Delay(TimeSpan.FromSeconds(seconds));
+			FinishTrace(newTrace);
+		});
+	}
+
+	private void AddTrace()
+	{
+		var newTrace = new OtlpTrace
+		{
+			StartTime = DateTimeOffset.Now - TimeSpan.FromSeconds(3),
+			EndTime = DateTimeOffset.Now,
+			FinalDuration = TimeSpan.FromSeconds(3),
+			Finished = true,
+			Name = $"Trace {_traceInteger}"
+		};
+		_traceInteger++;
+		Traces.Add(newTrace);
+	}
+
+	private void FinishTrace(OtlpTrace trace)
+	{
+		trace.EndTime = DateTimeOffset.Now;
+		trace.FinalDuration = trace.EndTime - trace.StartTime;
+		trace.Finished = true;
+	}
+
+	private static readonly string[] Verbs = ["GET", "POST", "PUT", "DELETE"];
+	private string GetRandomHttpVerb()
+	{
+		var results = Random.Shared.GetItems(Verbs, 1);
+		return results.Single();
+	}
 }
