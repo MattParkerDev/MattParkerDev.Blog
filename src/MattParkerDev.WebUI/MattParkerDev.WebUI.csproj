@@ -20,10 +20,6 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.1" PrivateAssets="all" />
 		<PackageReference Include="MudBlazor" Version="8.0.0" />
 		<PackageReference Include="MudBlazor.Markdown" Version="7.14.0" />
-		<PackageReference Include="Tailwind.MSBuild" Version="1.1.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="wwwroot\js\"/>
@@ -31,5 +27,6 @@
 
 	<PropertyGroup Label="Tailwind Properties">
 		<TailwindMinify>false</TailwindMinify>
+		<TailwindVersion>v4.0.3</TailwindVersion>
 	</PropertyGroup>
 </Project>
