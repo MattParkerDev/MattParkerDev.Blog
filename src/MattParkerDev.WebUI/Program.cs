@@ -16,5 +16,6 @@ builder.Services.AddMudServices(config =>
 	config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
 });
 builder.Services.AddMudMarkdownServices();
+builder.Services.AddMemoryCache(); // temporary workaround for https://github.com/MyNihongo/MudBlazor.Markdown/issues/311
 
 await builder.Build().RunAsync();
