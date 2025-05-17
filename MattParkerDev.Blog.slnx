@@ -1,0 +1,14 @@
+﻿<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+    <File Path=".gitignore" />
+    <File Path="global.json" />
+    <File Path="build-cloudflare.sh" />
+    <File Path="vercel.json" />
+    <File Path="Directory.Build.props" />
+    <File Path="local-publish.bat" />
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="src\MattParkerDev.WebUI\MattParkerDev.WebUI.csproj" Type="Classic C#" />
+  <Project Path="src\RssGenerator\RssGenerator.csproj" Type="Classic C#" />
+</Solution>
