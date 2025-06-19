@@ -51,4 +51,9 @@ public static class ThemeProvider
 			}
 		}
 	};
+
+	public static readonly MudMarkdownStyling MarkdownStyling = new()
+	{
+		CodeBlock = { Theme = CodeBlockTheme.Vs2015 }
+	};
 }

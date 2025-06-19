@@ -17,7 +17,7 @@
 	<MudText Class="d-flex mb-4" Typo="Typo.h3" GutterBottom="false">@_blogTitle</MudText>
 	<hr class="border-b-2 border-primary w-64 mb-16"/>
 
-	<MudMarkdown CodeBlockTheme="CodeBlockTheme.Vs2015" Value="@_markdownContent"/>
+	<MudMarkdown Styling="@ThemeProvider.MarkdownStyling" Value="@_markdownContent"/>
 	@if (_blogExists is true)
 	{
 		<GiscusWidget/>
