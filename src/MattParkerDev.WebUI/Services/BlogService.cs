@@ -6,9 +6,9 @@ public static class BlogService
 {
 	private static readonly TimeSpan TimeZoneOffset = TimeSpan.FromHours(+10); // +10 = AEST
 
-	private static readonly List<Blog> _blogs = new()
-	{
-		new()
+	private static readonly List<Blog> _blogs =
+	[
+		new Blog
 		{
 			Sequence = 0,
 			IsPublished = true,
@@ -19,7 +19,7 @@ public static class BlogService
 			Description = "A demo blog.",
 			PreviewImageUrl = "./_blogs/my-first-blog/image.webp"
 		},
-		new()
+		new Blog
 		{
 			Sequence = 1,
 			IsPublished = true,
@@ -30,7 +30,7 @@ public static class BlogService
 			Description = "I am your CTO, and these are my expectations of you.",
 			PreviewImageUrl = "./_blogs/expecting-professionalism/image.webp"
 		},
-		new()
+		new Blog
 		{
 			Sequence = 2,
 			IsPublished = true,
@@ -41,7 +41,7 @@ public static class BlogService
 			Description = "",
 			PreviewImageIcon = "./img/blazor.svg"
 		},
-		new()
+		new Blog
 		{
 			Sequence = 3,
 			IsPublished = true,
@@ -52,7 +52,7 @@ public static class BlogService
 			Description = "",
 			PreviewImageUrl = "./_blogs/efcore-health-checks/health-check.webp"
 		},
-		new()
+		new Blog
 		{
 			Sequence = 4,
 			IsPublished = true,
@@ -63,7 +63,7 @@ public static class BlogService
 			Description = "",
 			PreviewImageIcon = "./_blogs/azure-managed-identity-postgres-aspnetcore/azure.svg"
 		},
-		new()
+		new Blog
 		{
 			Sequence = 5,
 			IsPublished = true,
@@ -74,7 +74,7 @@ public static class BlogService
 			Description = "",
 			PreviewImageIcon = "./_blogs/windows-program-open-terminal-from-explorer/windows-explorer.svg"
 		}
-	};
+	];
 
 	public static List<Blog> Blogs => _blogs.Where(x => x.IsPublished is true).OrderBy(x => x.Sequence).ToList();
 

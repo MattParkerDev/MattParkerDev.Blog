@@ -36,7 +36,7 @@
 	/// Image format extension order, the last extension will be used in the fallback img tag
 	/// </summary>
 	[Parameter, EditorRequired]
-	public string PreferredExtensionOrder { get; set; } = default!;
+	public string PreferredExtensionOrder { get; set; } = null!;
 
 	private List<string> _preferredExtensionOrder => PreferredExtensionOrder.Trim().Replace(" ", null).Split(',').ToList();
 

@@ -49,14 +49,14 @@
 @code {
 
 	[Parameter]
-	public string BlogSlug { get; set; } = default!;
+	public string BlogSlug { get; set; } = null!;
 
 	private string _blogTitle = string.Empty;
 	private string _blogDescription = string.Empty;
 	private string _markdownContent = string.Empty;
-	private DateTimeOffset? _publishedDate = null;
+	private DateTimeOffset? _publishedDate;
 	private List<string> _keywords = [];
-	private bool? _blogExists = null;
+	private bool? _blogExists;
 
 	protected override async Task OnInitializedAsync()
 	{
