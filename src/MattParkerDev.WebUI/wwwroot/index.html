@@ -9,6 +9,7 @@
 	<title>MattParkerDev</title>
 	<base href="/"/>
 	<link href="/hero-square.svg" rel="icon" type="image/x-icon"/>
+	<link rel="preload" id="webassembly" />
 	<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="fonts/roboto-v30-latin-regular.woff2"/>
 	<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="fonts/roboto-v30-latin-700.woff2"/>
 	<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="fonts/roboto-v30-latin-500.woff2"/>
@@ -16,6 +17,7 @@
 	<link rel="stylesheet" href="_content/MudBlazor/MudBlazor.min.css"/>
 	<link rel="stylesheet" href="_content/MudBlazor.Markdown/MudBlazor.Markdown.min.css"/>
 	<link href="css/tailwind.css" rel="stylesheet"/>
+	<script type="importmap"></script>
 </head>
 
 <body>
@@ -94,7 +96,7 @@
 	<a class="dismiss">🗙</a>
 </div>
 
-<script defer src="_framework/blazor.webassembly.js"></script>
+<script defer src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
 <script defer src="_content/MudBlazor/MudBlazor.min.js"></script>
 <script defer src="_content/MudBlazor.Markdown/MudBlazor.Markdown.min.js"></script>
 </body>
