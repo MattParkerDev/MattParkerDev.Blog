@@ -1,14 +1,14 @@
 import { getPostSummaries } from '../lib/posts.server'
-import { SITE_URL } from '../lib/site'
+import { pageUrl } from '../lib/site'
 
 const STATIC_PATHS = ['/', '/blog', '/portfolio', '/about']
 
 export function loader() {
   const urls = [
-    ...STATIC_PATHS.map((path) => `  <url><loc>${SITE_URL}${path}</loc></url>`),
+    ...STATIC_PATHS.map((path) => `  <url><loc>${pageUrl(path)}</loc></url>`),
     ...getPostSummaries().map(
       (post) =>
-        `  <url><loc>${SITE_URL}/blog/${post.slug}</loc><lastmod>${post.date}</lastmod></url>`,
+        `  <url><loc>${pageUrl(`/blog/${post.slug}`)}</loc><lastmod>${post.date}</lastmod></url>`,
     ),
   ]
 

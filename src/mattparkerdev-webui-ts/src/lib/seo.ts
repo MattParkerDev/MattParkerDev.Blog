@@ -1,5 +1,5 @@
 import type { MetaDescriptor } from 'react-router'
-import { AUTHOR, SITE_NAME, SITE_URL } from './site'
+import { AUTHOR, pageUrl, SITE_NAME, SITE_URL } from './site'
 
 type PageMeta = {
   title: string
@@ -18,7 +18,7 @@ export function pageMeta({
   type = 'website',
   keywords = [],
 }: PageMeta): MetaDescriptor[] {
-  const url = `${SITE_URL}${path}`
+  const url = pageUrl(path)
   const imageMeta: MetaDescriptor[] = image
     ? [
         { property: 'og:image', content: `${SITE_URL}${image}` },

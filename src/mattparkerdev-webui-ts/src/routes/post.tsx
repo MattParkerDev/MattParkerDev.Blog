@@ -3,7 +3,7 @@ import type { Route } from './+types/post'
 import { Comments } from '../components/Comments'
 import { getPost } from '../lib/posts.server'
 import { pageMeta } from '../lib/seo'
-import { AUTHOR, SITE_NAME, SITE_URL } from '../lib/site'
+import { AUTHOR, pageUrl, SITE_NAME, SITE_URL } from '../lib/site'
 
 export async function loader({ params }: Route.LoaderArgs) {
   const post = await getPost(params.slug)
@@ -33,7 +33,7 @@ export function meta({ loaderData }: Route.MetaArgs) {
         headline: post.title,
         description: post.description,
         datePublished: post.date,
-        url: `${SITE_URL}${path}`,
+        url: pageUrl(path),
         author: { '@type': 'Person', name: AUTHOR, url: SITE_URL },
         ...(post.image ? { image: `${SITE_URL}${post.image}` } : {}),
       },

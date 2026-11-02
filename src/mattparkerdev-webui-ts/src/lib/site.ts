@@ -1,6 +1,12 @@
 export const SITE_URL = 'https://mattparker.dev'
 export const SITE_NAME = 'MattParkerDev'
 export const AUTHOR = 'Matt Parker'
+
+// Cloudflare Pages redirects pre-rendered pages to their trailing slash URL
+export function pageUrl(path: string) {
+  return `${SITE_URL}${path.endsWith('/') ? path : `${path}/`}`
+}
+
 export const SITE_DESCRIPTION =
   'Matt Parker is a software engineer in Brisbane, Australia, and the creator of SharpIDE and SharpDbg. He writes about .NET, Azure and all things software.'
 
