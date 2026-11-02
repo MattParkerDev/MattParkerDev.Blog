@@ -30,12 +30,12 @@ export function FeaturedProjects({ sharpIde, sharpDbg }: FeaturedProjectsProps) 
         </div>
         <img
           className="screenshot"
-          src="https://github.com/user-attachments/assets/bce91555-a1f2-43ab-a525-8353b4c7cff2"
-          width="1638"
-          height="935"
+          src="/img/sharpide.png"
+          width="1414"
+          height="853"
           loading="lazy"
           decoding="async"
-          alt="SharpIDE with a C# project open: a file explorer, the code editor and a Problems panel listing warnings."
+          alt="SharpIDE with a C# project open: a file explorer, the code editor and a Problems panel listing a warning."
         />
       </article>
       <article className="feature feature-dbg">
