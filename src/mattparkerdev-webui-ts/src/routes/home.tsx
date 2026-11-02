@@ -1,124 +1,70 @@
-import { useState } from 'react'
-import heroImg from '../assets/hero.png'
-import reactLogo from '../assets/react.svg'
-import viteLogo from '../assets/vite.svg'
-import '../App.css'
+import { Link } from 'react-router'
+import type { Route } from './+types/home'
+import { FeaturedProjects } from '../components/FeaturedProjects'
+import { PostList } from '../components/PostList'
+import { getFeaturedProjects } from '../lib/projects.server'
+import { getPostSummaries } from '../lib/posts.server'
+import { pageMeta } from '../lib/seo'
+import { AUTHOR, SITE_DESCRIPTION, SOCIALS } from '../lib/site'
 
-export function meta() {
-  return [{ title: 'mattparkerdev-webui-ts' }]
+export async function loader() {
+  return {
+    posts: getPostSummaries().slice(0, 4),
+    projects: await getFeaturedProjects(),
+  }
 }
 
-export default function Home() {
-  const [count, setCount] = useState(0)
+export function meta() {
+  return pageMeta({
+    title: `${AUTHOR} | Software engineer, creator of SharpIDE and SharpDbg`,
+    description: SITE_DESCRIPTION,
+    path: '/',
+  })
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+  const { posts, projects } = loaderData
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/routes/home.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+    <div className="wrap">
+      <section className="hero">
+        <p className="eyebrow">{AUTHOR} &middot; Software engineer &middot; Brisbane, Australia</p>
+        <h1>I build developer tools for .NET.</h1>
+        <p className="hero-intro">
+          I created <a href={projects.sharpIde.url}>SharpIDE</a>, a cross-platform IDE for .NET, and{' '}
+          <a href={projects.sharpDbg.url}>SharpDbg</a>, a .NET debugger written completely in C#. I also
+          write about .NET, Azure and all things software.
+        </p>
+        <ul className="social-links">
+          {SOCIALS.map((social) => (
+            <li key={social.href}>
+              <a href={social.href} rel="me">
+                {social.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <section className="section" aria-labelledby="projects-heading">
+        <div className="section-heading">
+          <h2 id="projects-heading">Projects</h2>
+          <Link className="text-link" to="/portfolio" prefetch="intent">
+            All projects
+          </Link>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
+        <FeaturedProjects sharpIde={projects.sharpIde} sharpDbg={projects.sharpDbg} />
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <section className="section" aria-labelledby="writing-heading">
+        <div className="section-heading">
+          <h2 id="writing-heading">Latest writing</h2>
+          <Link className="text-link" to="/blog" prefetch="intent">
+            All posts
+          </Link>
+        </div>
+        <PostList posts={posts} />
+      </section>
+    </div>
   )
 }

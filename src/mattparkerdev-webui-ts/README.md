@@ -1,32 +1,28 @@
-# React + TypeScript + Vite
+# mattparker.dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal site and blog, built with React, React Router framework mode and Vite. Every page is pre-rendered to static HTML.
 
-Currently, two official plugins are available:
+## Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `npm run dev`: start the dev server
+- `npm run build`: type check and pre-render the site to `build/client`
+- `npm run preview`: serve the built site locally
+- `npm run lint`: run oxlint
 
-## React Compiler
+## Writing a post
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Add a markdown file to `content/posts`. The filename becomes the URL slug.
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```md
+---
+title: "Post title"
+description: "Shown in post lists, search results and link previews."
+date: "2026-01-31T09:00:00+10:00"
+keywords: ["C#", ".NET"]
+image: "/_blogs/post-slug/preview.webp"
+---
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+`keywords` and `image` are optional. Images go in `public/_blogs/<slug>/`.
+
+Markdown and syntax highlighting run at build time, so they add no JavaScript to the browser. GitHub star counts are also fetched at build time, falling back to the values in `src/lib/projects.ts`.
